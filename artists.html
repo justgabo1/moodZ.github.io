@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select an Artist</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<script src="script.js"></script>
+
+<body>
+
+    <nav>
+        <div class="logo">
+            <h1>MoodZ</h1>
+        </div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#">Playlists</a></li>
+            <li><a href="#">Settings</a></li>
+        </ul>
+    </nav>
+
+    <div class="mood-selection">
+        <h2>Select Your Artist</h2>
+        <div id="artists-container"></div>
+    </div>
+
+    <a href="index.html" class="back-link">Back to Home</a>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const moods = {
+                happy: [
+                    { name: "BTS", img: "public/bts.jpeg" , link: "https://open.spotify.com/playlist/37i9dQZF1E4rlkYj6ItCDn", about: "K-pop sensations known for uplifting beats and inspiring lyrics." }, 
+                    { name: "Pitbull", img: "public/pitbull.jpeg", link: "https://open.spotify.com/playlist/37i9dQZF1E4r0nzNspuQFK", about: "The king of party anthems, bringing energy to every track." },
+                    { name: "BBNO$", img: "public/bbno.jpeg", link: "https://open.spotify.com/playlist/37i9dQZF1E4m14w1NfDKCh", about: "A rapper with fun, quirky lyrics and infectious beats." }
+                ],
+
+                sad: [
+                    { name: "TV Girl", img: "public/tvgirl.jpeg" , link: "https://open.spotify.com/playlist/37i9dQZF1E4lFGdRLY5idQ", about: "Dreamy indie pop with nostalgic, heart-touching melodies." },
+                    { name: "Billie Eilish", img: "public/billie.jpeg" , link: "https://open.spotify.com/playlist/37i9dQZF1E4oee5QSbfqLN", about: "Soft, whispery vocals with deep emotional storytelling." },
+                    { name: "Beach House", img: "public/beachhouse.jpeg" , link: "https://open.spotify.com/playlist/37i9dQZF1E4DemSGzmCZ29", about: "Ethereal dream pop that transports you to another world." }
+                ],
+                focus: [
+                    { name: "Lofi Girl", img: "public/lofigirl.jpeg" , link: "https://open.spotify.com/playlist/37i9dQZF1E4yVfD4M4LwFh", about: "Relaxing beats perfect for studying and deep focus." },
+                    { name: "Hans Zimmer", img: "public/hanszimmer.jpeg" , link: "https://open.spotify.com/playlist/37i9dQZF1E4sbexosKtF5C", about: "Legendary composer behind cinematic, powerful soundtracks." },
+                    { name: "Kordhell", img: "public/kordhell.jpeg" , link: "https://open.spotify.com/playlist/37i9dQZF1E4yleuWstyUDt", about: "Dark phonk beats with a hypnotic and energetic vibe." }
+                ],
+                angry: [
+                    { name: "Eminem", img: "public/eminem.jpeg" , link: "https://open.spotify.com/playlist/37i9dQZF1E4uduXaJcMi49", about: "Hard-hitting rap with raw emotion and unmatched flow." },
+                    { name: "Slipknot", img: "public/slipknot.jpeg" , link: "https://open.spotify.com/playlist/37i9dQZF1E4m433mhB66fa", about: "Heavy metal at its finest—intense, chaotic, and powerful." },
+                    { name: "Bring Me The Horizon", img: "public/bmth.jpeg" , link: "https://open.spotify.com/playlist/37i9dQZF1E4jXFV0KMR1gU", about: "A mix of metalcore and alternative rock with deep emotions." }
+                ]
+            };
+
+
+
+            const artistContainer = document.getElementById("artists-container");
+            const selectedMood = localStorage.getItem("selectedMood") || "happy"; 
+
+            if (moods[selectedMood]) {
+                moods[selectedMood].forEach(artist => {
+                    const artistDiv = document.createElement("div");
+                    artistDiv.classList.add("artist-card");
+
+                    const img = document.createElement("img");
+                    img.src = artist.img;
+                    img.alt = artist.name;
+                    img.classList.add("artist-img");
+
+                    const btn = document.createElement("button");
+                    btn.textContent = artist.name;
+                    btn.classList.add("artist-btn");
+                    btn.onclick = () => window.open(artist.link, "_blank");
+
+                    const aboutDiv = document.createElement("div");
+                    aboutDiv.classList.add("artist-about");
+                    aboutDiv.textContent = artist.about;
+
+                    artistDiv.appendChild(img);
+                    artistDiv.appendChild(btn);
+                    artistDiv.appendChild(aboutDiv);
+
+                    artistContainer.appendChild(artistDiv);
+                });
+            } else {
+                artistContainer.innerHTML = "<p>No mood selected. Go back to home.</p>";
+            }
+        });
+    </script>
+
+    <style>
+        body {
+            font-family: 'Itim', cursive;
+            background-color: #F0F4FF;
+            color: #2A1D51;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        /* Artist Cards */
+        .artist-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px auto;
+            padding: 15px;
+            width: 320px;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .artist-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+
+        .artist-btn {
+            padding: 10px 20px;
+            background-color: #2A1D51;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .artist-btn:hover {
+            background-color: #4b367c;
+        }
+
+        .artist-about {
+            background-color: #e0e4ff;
+            color: #2A1D51;
+            padding: 12px;
+            border-radius: 15px;
+            text-align: center;
+            font-size: 14px;
+            width: 80%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Dark Mode */
+        body.dark-mode {
+            background-color: #111;
+            color: #00BFFF;
+        }
+
+        body.dark-mode .artist-card {
+            background-color: #222;
+        }
+
+        body.dark-mode .artist-btn {
+            background-color: #444;
+            color: #00BFFF;
+        }
+
+        body.dark-mode .artist-about {
+            background-color: #333;
+            color: #00BFFF;
+        }
+
+ 
+
+
+
+
+    </style>
+
+</body>
+</html>
