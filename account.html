@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account - MoodZ</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+
+<script src="script.js"></script>
+
+<body>
+
+    <nav>
+        <h1>MoodZ</h1>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="settings.html">Settings</a></li>
+            <li><button id="logout-btn" class="logout-btn">Log Out</button></li>
+        </ul>
+    </nav>
+
+    <section id="account-page">
+        <h2>My Account</h2>
+
+        <div class="profile-card">
+            <div class="profile-left">
+                <img id="profile-picture" class="profile-pic" src="profile-placeholder.png">
+            </div>
+            <div class="profile-right">
+                <div class="profile-info">
+                    <p><strong>Username:</strong> <span id="name-display">Examplename123</span></p>
+                    <p><strong>Email:</strong> <span id="email-display">example@example.com</span></p>
+                    <p><strong>Country:</strong> <span id="country-display">United States</span></p>
+                    <p><strong>Time Zone:</strong> <span id="timezone-display">GMT -5</span></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="account-actions">
+            <button class="btn" onclick="location.href='settings.html'">Edit Profile</button>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Load user account details from localStorage
+            const fields = ["name", "email", "country", "timezone"];
+            fields.forEach(field => {
+                const savedValue = localStorage.getItem(field);
+                if (savedValue) {
+                    document.getElementById(field + "-display").textContent = savedValue;
+                }
+            });
+
+            // Load saved profile picture from localStorage
+            const savedPicture = localStorage.getItem("profilePicture");
+            if (savedPicture) {
+                document.getElementById("profile-picture").src = savedPicture;
+            }
+
+            // Logout button functionality
+            const logoutBtn = document.getElementById("logout-btn");
+            logoutBtn.addEventListener("click", function () {
+                // Clear localStorage and session (if any)
+                localStorage.clear();
+                // Redirect to login page or home
+                window.location.href = "login.html"; // Modify to the actual login page
+            });
+        });
+    </script>
+
+</body>
+</html>
