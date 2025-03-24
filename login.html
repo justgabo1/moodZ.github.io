@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - MoodZ</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+
+<script src="script.js"></script>
+
+
+
+<body>
+    <div class="login-container">
+        <h1>Welcome Back!</h1>
+        <p class="subtitle">It's nice to see you again!</p>
+
+
+
+
+<section id="login-page">
+        <h2>Login</h2>
+       
+          <form id="login-form" onsubmit="saveLoginData(event)">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="xxx.xxxx@xxxxx.xxx" required><br><br>
+
+
+            <label for="username">Username</label>
+            <div class="username-cointainer">
+                <input type="username" id="username" placeholder="Enter Your Username" required><br><br>
+            </div>
+
+
+             <button type="submit">Login</button>
+
+
+
+
+ </form>
+    </section>
+            <div class="separator">Log into your Spotify</div>
+
+
+            <!-- Spotify Login Button Container -->
+<div class="spotify-login-container">
+    <a href="https://accounts.spotify.com/en-GB/login?creation_point=https%3A%2F%2Fopen.spotify.com%2Fplaylist%2F37i9dQZF1DX3Ey4fKwxZBq%3Fsp_cid%3D20882189b080dae2e326823696b518b6%26device%3Ddesktop&continue=https%3A%2F%2Fopen.spotify.com%2Fplaylist%2F37i9dQZF1E4DemSGzmCZ29%3Fflow_ctx%3D06e7cc51-672d-445d-8d50-d18eaf017c35%253A1742783089&flow_ctx=06e7cc51-672d-445d-8d50-d18eaf017c35%3A1742783089"
+    class="spotify-login" target="_blank">Login to Spotify</a>
+</div>
+
+
+
+
+            <p class="signup-text">
+                Don't have an account? <a href="register.html" class="signup-link">Sign Up</a>
+            </p>
+        </form>
+
+
+        <a href="index.html" class="back-home">Back to Home</a>
+    </div>
+   
+   
+
+
+    <script>
+        // This function saves user data when they log in
+        function saveLoginData(event) {
+            event.preventDefault(); // Prevent form submission
+
+
+            const username = document.getElementById("username").value;
+            const email = document.getElementById("email").value;
+
+
+            // Save data to localStorage
+            localStorage.setItem("name", username);
+            localStorage.setItem("email", email);
+
+
+            // Redirect to the account page
+            window.location.href = "account.html";
+        }
+    </script>
+   
+</body>
+</html>
+
+
+
