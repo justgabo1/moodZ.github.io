@@ -1,0 +1,527 @@
+/* General Styles */
+body {
+    font-family: 'Itim', cursive;
+    background-color: #F0F4FF;
+    color: #2A1D51;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+/* Dark Mode */
+body.dark-mode {
+    background-color: #120c2b;
+    color: #00BFFF;
+}
+
+/* Navbar */
+nav {
+    background-color: #2A1D51;
+    padding: 15px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+body.dark-mode nav {
+    background-color: #553c99;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+}
+
+body.dark-mode nav ul li a {
+    color: #00BFFF;
+}
+
+.choose-mood {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+/* Mood Buttons */
+.mood-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.mood-btn, button {
+    background-color: #FFD166;
+    border: none;
+    padding: 20px 40px;
+    font-size: 24px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.mood-btn:hover, button:hover {
+    background-color: #EF476F;
+    color: white;
+}
+
+/* Dark Mode for Buttons */
+body.dark-mode button {
+    background-color: #3a398b;
+    color: #00BFFF;
+}
+
+body.dark-mode button:hover {
+    background-color: #314443;
+}
+
+/* Artist Selection */
+#artists-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.artist-btn {
+    background-color: #4b71fd;
+    border: none;
+    padding: 15px 25px;
+    font-size: 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    color: white;
+    font-weight: bold;
+}
+
+.artist-btn:hover {
+    background-color: #118AB2;
+}
+
+/* Saved Playlists */
+#saved-playlists {
+    text-align: center;
+    padding: 20px;
+}
+
+#playlist-container {
+    display: flex;
+    flex-direction: column; /* Stack iframes vertically */
+    gap: 20px;
+    max-height: 500px; /* Limits height */
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding: 10px;
+}
+
+#playlist-container iframe {
+    width: 100%;
+    height: 80px;
+    border-radius: 10px;
+    border: none;
+}
+
+/* Dark Mode for Saved Playlists */
+body.dark-mode #saved-playlists,
+body.dark-mode #playlist-container {
+    background-color: #222;
+    color: white;
+}
+
+body.dark-mode #playlist-container iframe {
+    background-color: #333;
+    border: 1px solid #00BFFF;
+}
+
+/* Sign-Up Page (Register.html) */
+#signup-page {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Input Fields */
+#signup-form input {
+    width: 90%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 2px solid #2A1D51;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+/* Dark Mode for Register Page */
+body.dark-mode #signup-page {
+    background-color: #222;
+    color: white;
+}
+
+body.dark-mode #signup-form input {
+    background-color: #353250;
+    color: white;
+    border: 2px solid #00BFFF;
+}
+
+/* Ensure Dark Mode Applies to Register Links */
+body.dark-mode .register-link a {
+    color: #00BFFF;
+}
+
+/* Dark Mode for Input Fields */
+body.dark-mode input {
+    background-color: #333;
+    color: white;
+    border: 2px solid #00BFFF;
+}
+
+/* Theme Toggle */
+#theme-toggle {
+    margin-top: 20px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    #playlist-container {
+        max-height: 400px;
+    }
+}
+
+/* Login and Register Containers */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Login & Register Forms */
+.login-container, 
+.register-container {
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    margin: auto;
+    padding: 30px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 2px solid black;
+}
+
+body.dark-mode .login-container, 
+body.dark-mode .register-container {
+    background-color: #222;
+    color: white;
+    border: 2px solid #00BFFF;
+}
+
+/* Headings */
+h1 {
+    font-size: 32px;
+    margin: 0;
+}
+
+.subtitle {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+/* Labels & Inputs */
+label {
+    display: block;
+    text-align: left;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid black;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+/* Password Field */
+.password-container {
+    position: relative;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+/* Options Row */
+.options {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.forgot-password {
+    color: red;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Login Button */
+.login-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #2A1D51;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.login-btn:hover {
+    background-color: #4b2a89;
+}
+
+/* Separator */
+.separator {
+    margin: 20px 0;
+    font-size: 14px;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.separator::before,
+.separator::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: black;
+    margin: 0 10px;
+}
+
+/* Google Login Button */
+.google-login {
+    width: 100%;
+    padding: 10px;
+    background: white;
+    border: 2px solid black;
+    border-radius: 8px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.google-login img {
+    width: 20px;
+    margin-right: 8px;
+}
+
+/* Sign Up */
+.signup-text {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.signup-link {
+    color: #2A1D51;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.signup-link:hover {
+    text-decoration: underline;
+}
+
+/* Back to Home */
+.back-home {
+    display: block;
+    margin-top: 20px;
+    padding: 8px 16px;
+    border: 2px solid black;
+    border-radius: 8px;
+    background: #f4f4f4;
+    font-size: 16px;
+    text-decoration: none;
+    color: black;
+}
+
+.back-home:hover {
+    background: #ddd;
+}
+
+/* Log Out Button (Updated) */
+button {
+    background-color: #f4f4f4;
+    color: black;
+    border: 2px solid #2A1D51;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+}
+
+button:focus {
+    outline: none;
+}
+
+button:hover {
+    background-color: #f4f4f4; /* No hover effect */
+    color: black;
+    border: 2px solid #2A1D51;
+}
+
+
+/* Dark Mode Specific Styles */
+body.dark-mode button {
+    background-color: #444;
+    color: #00BFFF;
+}
+
+body.dark-mode button:hover {
+    background-color: #555;
+}
+
+/* ACCOUNT PAGE STYLING */
+#account-page {
+    max-width: 600px;
+    margin: 40px auto;
+    text-align: center;
+}
+
+.profile-card {
+    display: flex;
+    align-items: center;
+    background: var(--card-bg, rgba(255, 255, 255, 0.1));
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.profile-left {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.profile-pic {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 4px solid var(--accent-color, #2A1D51);
+}
+
+.profile-right {
+    flex: 2;
+    text-align: left;
+}
+
+.profile-info, .account-stats {
+    padding: 10px 0;
+}
+
+.account-stats p {
+    font-size: 14px;
+    color: #aaa;
+}
+
+.account-actions {
+    margin-top: 20px;
+}
+
+.btn {
+    background: var(--accent-color, #2A1D51);
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: var(--accent-hover, #402C72);
+}
+
+.danger {
+    background: #d9534f;
+}
+
+.danger:hover {
+    background: #c9302c;
+}
+
+/* DARK MODE */
+.dark-mode .profile-card {
+    background: rgba(31, 19, 85, 0.5);
+}
+
+/* Spotify Login Button */
+.spotify-login {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center content horizontally */
+    gap: 10px; /* Adds spacing between the logo and text */
+    background-color: #1DB954; /* Spotify Green */
+    color: white;
+    padding: 10px 15px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    width: auto; /* Ensure button width is based on content */
+    transition: background 0.3s ease;
+}
+
+/* Spotify Login Button Hover */
+.spotify-login:hover {
+    background-color: #1AA34A; /* Darker Green on Hover */
+}
+
+/* Spotify Register Button */
+.spotify-register {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center content horizontally */
+    gap: 10px; /* Space between logo and text */
+    background-color: #1DB954; /* Spotify Green */
+    color: white;
+    padding: 10px 15px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    width: auto; /* Ensure button width is based on content */
+    transition: background 0.3s ease;
+}
+
+/* Spotify Register Button Hover */
+.spotify-register:hover {
+    background-color: #1AA34A; /* Darker Green on Hover */
+}
