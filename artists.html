@@ -8,8 +8,11 @@
 </head>
 
 <script src="script.js"></script>
+    
+<div id="artists-container"></div>
 
-  <div style="text-align: center; margin-top: 30px;">
+<-- Radio button BELOW artist buttons -->
+<div style="text-align: center; margin-top: 30px;">
     <button id="radio-btn" class="mood-btn">🎵 MoodZ Radio</button>
 </div>
 
@@ -91,15 +94,27 @@
             artistContainer.innerHTML = "<p>No mood selected. Go back to home.</p>";
         }
 
-        // 🎵 MoodZ Radio Button Functionality
-        const radioBtn = document.getElementById("radio-btn");
+        // 🎵 MoodZ Radio Button Logic
+const radioBtn = document.getElementById("radio-btn");
+if (radioBtn && artistContainer) {
+    const selectedMood = localStorage.getItem("selectedMood");
+    if (selectedMood && moods[selectedMood]) {
+        radioBtn.style.display = "inline-block"; // make sure it's visible
+
         radioBtn.addEventListener("click", () => {
-            const playlists = moods[selectedMood].map(artist => artist.link);
+            const playlists = moods[selectedMood];
             const randomIndex = Math.floor(Math.random() * playlists.length);
-            const randomPlaylist = playlists[randomIndex];
+            const randomPlaylist = playlists[randomIndex].link;
             window.open(randomPlaylist, "_blank");
         });
-    });
+
+        // Show the artists too (in case this wasn't working)
+        showArtists(selectedMood);
+    } else {
+        radioBtn.style.display = "none"; // Hide if mood not set
+    }
+}
+
 </script>
 
 
