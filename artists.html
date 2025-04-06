@@ -1,209 +1,232 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Select an Artist</title>
-  <link rel="stylesheet" href="styles.css" />
-  <style>
-    body {
-      font-family: 'Itim', cursive;
-      background-color: #F0F4FF;
-      color: #2A1D51;
-      margin: 0;
-      padding: 0;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select an Artist</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Itim', cursive;
+            background-color: #F0F4FF;
+            color: #2A1D51;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
 
-    nav {
-      background-color: #2A1D51;
-      padding: 10px;
-    }
+        nav {
+            background-color: #2A1D51;
+            padding: 10px;
+        }
 
-    nav h1 {
-      color: white;
-      margin: 0;
-      text-align: center;
-    }
+        nav h1 {
+            color: white;
+            margin: 0;
+        }
 
-    nav ul {
-      list-style: none;
-      display: flex;
-      justify-content: center;
-      padding: 0;
-      margin: 10px 0;
-    }
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            padding: 0;
+        }
 
-    nav ul li {
-      margin: 0 15px;
-    }
+        nav ul li {
+            margin: 0 15px;
+        }
 
-    nav ul li a {
-      color: white;
-      text-decoration: none;
-    }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
 
-    .mood-selection {
-      text-align: center;
-      padding: 20px;
-    }
+        .mood-selection h2 {
+            margin-top: 30px;
+        }
 
-    .mood-selection h2 {
-      margin-bottom: 20px;
-    }
+        .artist-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px auto;
+            padding: 15px;
+            width: 320px;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
 
-    #artists-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-    }
+        .artist-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
 
-    .artist-card {
-      background-color: white;
-      border-radius: 15px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      padding: 20px;
-      width: 280px;
-      text-align: center;
-    }
+        .artist-btn {
+            padding: 10px 20px;
+            background-color: #2A1D51;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
 
-    .artist-img {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 10px;
-    }
+        .artist-btn:hover {
+            background-color: #4b367c;
+        }
 
-    .artist-btn {
-      background-color: #2A1D51;
-      color: white;
-      border: none;
-      border-radius: 10px;
-      padding: 10px 20px;
-      cursor: pointer;
-      font-size: 16px;
-      margin-bottom: 10px;
-    }
+        .artist-about {
+            background-color: #e0e4ff;
+            color: #2A1D51;
+            padding: 12px;
+            border-radius: 15px;
+            text-align: center;
+            font-size: 14px;
+            width: 80%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
 
-    .artist-btn:hover {
-      background-color: #4b367c;
-    }
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: #2A1D51;
+            text-decoration: underline;
+        }
 
-    .artist-about {
-      background-color: #e0e4ff;
-      padding: 12px;
-      border-radius: 10px;
-      font-size: 14px;
-    }
+        #radio-btn {
+            margin: 40px auto 20px;
+            padding: 12px 30px;
+            font-size: 18px;
+            border: none;
+            background-color: #2A1D51;
+            color: white;
+            border-radius: 15px;
+            cursor: pointer;
+        }
 
-    #radio-section {
-      text-align: center;
-      margin-top: 40px;
-    }
+        #radio-btn:hover {
+            background-color: #4b367c;
+        }
 
-    #radio-btn {
-      background-color: #2A1D51;
-      color: white;
-      padding: 12px 30px;
-      border: none;
-      border-radius: 15px;
-      cursor: pointer;
-      font-size: 18px;
-    }
+        #now-playing {
+            display: none;
+            margin-top: 10px;
+            color: #4b367c;
+            font-weight: bold;
+            animation: pulse 1s infinite;
+        }
 
-    #radio-btn:hover {
-      background-color: #4b367c;
-    }
-
-    #now-playing {
-      display: none;
-      margin-top: 10px;
-      color: #4b367c;
-      font-weight: bold;
-      animation: pulse 1s infinite;
-    }
-
-    @keyframes pulse {
-      0% { opacity: 0.3; }
-      50% { opacity: 1; }
-      100% { opacity: 0.3; }
-    }
-
-    .back-link {
-      display: block;
-      text-align: center;
-      margin: 30px 0;
-      color: #2A1D51;
-      text-decoration: underline;
-    }
-  </style>
+        @keyframes pulse {
+            0% { opacity: 0.3; }
+            50% { opacity: 1; }
+            100% { opacity: 0.3; }
+        }
+    </style>
 </head>
 <body>
-  <nav>
-    <h1>MoodZ</h1>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="#">Playlists</a></li>
-      <li><a href="#">Settings</a></li>
-    </ul>
-  </nav>
 
-  <div class="mood-selection">
-    <h2>Select Your Artist</h2>
-    <div id="artists-container"></div>
+    <nav>
+        <div class="logo">
+            <h1>MoodZ</h1>
+        </div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#">Playlists</a></li>
+            <li><a href="#">Settings</a></li>
+        </ul>
+    </nav>
 
-    <div id="radio-section">
-      <button id="radio-btn">🎵 MoodZ Radio</button>
-      <div id="now-playing">🎶 Now Playing...</div>
+    <div class="mood-selection">
+        <h2>Select Your Artist</h2>
+        <div id="artists-container"></div>
     </div>
-  </div>
 
-  <a href="index.html" class="back-link">Back to Home</a>
+    <div style="text-align: center;">
+        <button id="radio-btn" class="mood-btn">🎵 MoodZ Radio</button>
+        <div id="now-playing">🎶 Now Playing...</div>
+    </div>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const moods = {
-        happy: [
-          { name: "BTS", img: "bts.jpeg", link: "https://open.spotify.com/playlist/37i9dQZF1E4rlkYj6ItCDn", about: "BTS is a South Korean boy band." },
-          { name: "Pitbull", img: "pitbull.jpeg", link: "https://open.spotify.com/playlist/37i9dQZF1E4r0nzNspuQFK", about: "Pitbull is an American rapper." },
-          { name: "BBNO$", img: "bbno.jpeg", link: "https://open.spotify.com/playlist/37i9dQZF1E4m14w1NfDKCh", about: "bbno$ is a Canadian rapper." }
-        ],
-        // Add the rest of your moods here...
-      };
+    <a href="index.html" class="back-link">Back to Home</a>
 
-      const selectedMood = localStorage.getItem("selectedMood") || "happy";
-      const container = document.getElementById("artists-container");
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const moods = {
+                happy: [
+                    { name: "BTS", img: "bts.jpeg", link: "https://open.spotify.com/playlist/37i9dQZF1E4rlkYj6ItCDn", about: "BTS (방탄소년단), is a South Korean boy band debuted in 2013. The band consists of Jin, Suga, J-Hope, RM, Jimin, V, and Jung Kook." }, 
+                    { name: "Pitbull", img: "pitbull.jpeg", link: "https://open.spotify.com/playlist/37i9dQZF1E4r0nzNspuQFK", about: "Armando Christian Pérez, aka Pitbull, is an American rapper and singer." },
+                    { name: "BBNO$", img: "bbno.jpeg", link: "https://open.spotify.com/playlist/37i9dQZF1E4m14w1NfDKCh", about: "Alexander Gumuchian, known as bbno$, is a Canadian rapper and singer." }
+                ],
+                sad: [
+                    { name: "TV Girl", img: "tvgirl.jpeg", link: "https://open.spotify.com/playlist/37i9dQZF1E4lFGdRLY5idQ", about: "TV Girl is an American indie pop band from San Diego." },
+                    { name: "Billie Eilish", img: "billie.jpeg", link: "https://open.spotify.com/playlist/37i9dQZF1E4oee5QSbfqLN", about: "Billie Eilish is an American singer-songwriter." },
+                    { name: "Beach House", img: "beachhouse.jpeg", link: "https://open.spotify.com/playlist/37i9dQZF1E4DemSGzmCZ29", about: "Beach House is an American dream pop band." }
+                ],
+                focus: [
+                    { name: "Lofi Girl", img: "lofigirl.jpeg", link: "https://open.spotify.com/playlist/37i9dQZF1E4yVfD4M4LwFh", about: "Lofi Girl is a YouTube channel known for 24/7 lo-fi music." },
+                    { name: "Hans Zimmer", img: "hanszimmer.jpeg", link: "https://open.spotify.com/playlist/37i9dQZF1E4sbexosKtF5C", about: "Hans Zimmer is a legendary film composer." },
+                    { name: "Kordhell", img: "kordhell.jpeg", link: "https://open.spotify.com/playlist/37i9dQZF1E4yleuWstyUDt", about: "Kordhell creates dark phonk beats." }
+                ],
+                angry: [
+                    { name: "Eminem", img: "eminem.jpeg", link: "https://open.spotify.com/playlist/37i9dQZF1E4uduXaJcMi49", about: "Eminem is one of the most influential rappers ever." },
+                    { name: "Slipknot", img: "slipknot.jpeg", link: "https://open.spotify.com/playlist/37i9dQZF1E4m433mhB66fa", about: "Slipknot is an American heavy metal band." },
+                    { name: "Bring Me The Horizon", img: "bmth.jpeg", link: "https://open.spotify.com/playlist/37i9dQZF1E4jXFV0KMR1gU", about: "BMTH is a British rock band formed in 2004." }
+                ]
+            };
 
-      if (moods[selectedMood]) {
-        moods[selectedMood].forEach(artist => {
-          const card = document.createElement("div");
-          card.className = "artist-card";
+            const artistContainer = document.getElementById("artists-container");
+            const selectedMood = localStorage.getItem("selectedMood") || "happy";
 
-          card.innerHTML = `
-            <img src="${artist.img}" alt="${artist.name}" class="artist-img">
-            <button class="artist-btn" onclick="window.open('${artist.link}', '_blank')">${artist.name}</button>
-            <div class="artist-about">${artist.about}</div>
-          `;
+            // Render Artists
+            if (moods[selectedMood]) {
+                moods[selectedMood].forEach(artist => {
+                    const artistDiv = document.createElement("div");
+                    artistDiv.classList.add("artist-card");
 
-          container.appendChild(card);
+                    const img = document.createElement("img");
+                    img.src = artist.img;
+                    img.alt = artist.name;
+                    img.classList.add("artist-img");
+
+                    const btn = document.createElement("button");
+                    btn.textContent = artist.name;
+                    btn.classList.add("artist-btn");
+                    btn.onclick = () => window.open(artist.link, "_blank");
+
+                    const aboutDiv = document.createElement("div");
+                    aboutDiv.classList.add("artist-about");
+                    aboutDiv.textContent = artist.about;
+
+                    artistDiv.appendChild(img);
+                    artistDiv.appendChild(btn);
+                    artistDiv.appendChild(aboutDiv);
+                    artistContainer.appendChild(artistDiv);
+                });
+            } else {
+                artistContainer.innerHTML = "<p>No mood selected. Go back to home.</p>";
+            }
+
+            // Radio button
+            const radioBtn = document.getElementById("radio-btn");
+            const nowPlaying = document.getElementById("now-playing");
+
+            if (radioBtn && moods[selectedMood]) {
+                radioBtn.addEventListener("click", () => {
+                    const randomIndex = Math.floor(Math.random() * moods[selectedMood].length);
+                    const playlist = moods[selectedMood][randomIndex].link;
+
+                    nowPlaying.style.display = "block";
+                    setTimeout(() => nowPlaying.style.display = "none", 3000); // hide after 3s
+
+                    window.open(playlist, "_blank");
+                });
+            }
         });
-      }
+    </script>
 
-      const radioBtn = document.getElementById("radio-btn");
-      const nowPlaying = document.getElementById("now-playing");
-
-      radioBtn.addEventListener("click", () => {
-        const artists = moods[selectedMood];
-        const random = Math.floor(Math.random() * artists.length);
-        const randomPlaylist = artists[random].link;
-
-        nowPlaying.style.display = "block";
-        setTimeout(() => nowPlaying.style.display = "none", 3000);
-
-        window.open(randomPlaylist, "_blank");
-      });
-    });
-  </script>
 </body>
 </html>
