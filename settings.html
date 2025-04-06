@@ -7,6 +7,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <style>
+        /* Dark mode styles */
+        body.dark-mode {
+            background-color: #333;
+            color: white;
+        }
+
+        /* Your existing styles... */
         .settings-row {
             display: flex;
             align-items: center;
@@ -25,105 +32,8 @@
             background-color: #f9f9f9;
         }
 
-        .settings-row button {
-            margin-left: 10px;
-            padding: 5px 10px;
-            font-size: 14px;
-            border: none;
-            border-radius: 5px;
-            background-color: #FFD166;
-            cursor: pointer;
-        }
-
-        .settings-row button:hover {
-            background-color: #EF476F;
-            color: white;
-        }
-
-        .save-btn {
-            background-color: #4CAF50;
-            display: none;
-        }
-
-        .save-btn:hover {
-            background-color: #45A049;
-        }
-
-        .profile-container {
-            position: relative;
-            width: 120px;
-            height: 120px;
-            margin: 20px auto;
-        }
-
-        .profile-pic {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid #2A1D51;
-            display: block;
-        }
-
-        .upload-label {
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0, 0, 0, 0.7);
-            color: white;
-            font-size: 12px;
-            padding: 5px;
-            border-radius: 5px;
-            cursor: pointer;
-            width: 80%;
-            text-align: center;
-        }
-
-        .upload-label:hover {
-            background: rgba(0, 0, 0, 0.9);
-        }
-
-        .file-input {
-            display: none;
-        }
-
-        .delete-btn {
-            display: block;
-            margin: 10px auto;
-            padding: 5px 10px;
-            font-size: 14px;
-            border: none;
-            border-radius: 5px;
-            background-color: #EF476F;
-            color: white;
-            cursor: pointer;
-        }
-
-        .delete-btn:hover {
-            background-color: #D7263D;
-        }
-
-        #profile-section {
-            text-align: center;
-            margin: 20px 0;
-        }
-
-        #profile-section button {
-            padding: 10px 20px;
-            font-size: 16px;
-            border: none;
-            border-radius: 5px;
-            background-color: #4b71fd;
-            color: white;
-            cursor: pointer;
-        }
-
-        #profile-section button:hover {
-            background-color: #118AB2;
-        }
-		
-		.theme-toggle-btn {
+        /* Other styles here... */
+        .theme-toggle-btn {
             margin-left: 10px;
             padding: 5px 10px;
             font-size: 14px;
@@ -137,13 +47,8 @@
             background-color: #EF476F;
             color: white;
         }
-		
-		
-	
-		
     </style>
 </head>
-
 
 <script src="script.js"></script>
 
@@ -158,13 +63,11 @@
         <!-- Profile Picture Upload -->
         <section id="profile-settings">
             <h2>Profile Picture</h2>
-
             <div class="profile-container">
-                <img id="profile-picture-preview" class="profile-pic" src="profile-placeholder.png" alt="  ">
+                <img id="profile-picture-preview" class="profile-pic" src="profile-placeholder.png" alt="Profile Picture">
                 <label for="profile-picture-input" class="upload-label">Choose File</label>
                 <input type="file" id="profile-picture-input" class="file-input" accept="image/*">
             </div>
-
             <button id="delete-btn" class="delete-btn">Delete Picture</button>
         </section>
 
@@ -173,7 +76,6 @@
         <!-- Account Settings -->
         <section id="account-settings">
             <h2>Account Settings</h2>
-
             <div class="settings-row">
                 <label for="name">Name:</label>
                 <input type="text" id="name" disabled>
@@ -198,31 +100,12 @@
 
         <hr>
 
+        <!-- Other Settings -->
         <section id="other-settings">
-            <div class="settings-row">
-                <label for="country">Country:</label>
-                <input type="text" id="country" disabled>
-                <button onclick="enableEdit('country')">Edit</button>
-                <button class="save-btn" onclick="saveData('country')">Save</button>
-            </div>
-
-            <div class="settings-row">
-                <label for="timezone">Time Zone:</label>
-                <input type="text" id="timezone" disabled>
-                <button onclick="enableEdit('timezone')">Edit</button>
-                <button class="save-btn" onclick="saveData('timezone')">Save</button>
-            </div>
-			
-			 <!-- Theme Section -->
             <div class="settings-row">
                 <label for="theme-toggle">Dark Mode:</label>
                 <input type="checkbox" id="theme-toggle">
-                
             </div>
-
-		
-			
-			
         </section>
 
         <hr>
@@ -265,7 +148,27 @@
             }
         }
 
-        document.addEventListener("DOMContentLoaded", loadSavedData);
+        document.addEventListener("DOMContentLoaded", function () {
+            loadSavedData();
+
+            // Dark mode toggle handling
+            const darkModeToggle = document.getElementById("theme-toggle");
+            if (localStorage.getItem("dark-mode") === "enabled") {
+                document.body.classList.add("dark-mode");
+                darkModeToggle.checked = true;
+            }
+
+            // Dark mode toggle event
+            darkModeToggle.addEventListener("change", function () {
+                if (darkModeToggle.checked) {
+                    document.body.classList.add("dark-mode");
+                    localStorage.setItem("dark-mode", "enabled");
+                } else {
+                    document.body.classList.remove("dark-mode");
+                    localStorage.setItem("dark-mode", "disabled");
+                }
+            });
+        });
 
         document.getElementById("profile-picture-input").addEventListener("change", function(event) {
             const file = event.target.files[0];
@@ -284,35 +187,6 @@
             document.getElementById("profile-picture-preview").src = "profile-placeholder.png";
             localStorage.removeItem("profilePicture");
         });
-		
-		
-		 document.addEventListener("DOMContentLoaded", function () {
-            // Load saved data for settings page
-            const fields = ["name", "email"];
-            fields.forEach(field => {
-                const savedValue = localStorage.getItem(field);
-                if (savedValue) {
-                    document.getElementById(field).value = savedValue;
-                }
-            });
-        });
-
-        // Function to save settings
-        function saveSettings(fieldId) {
-            const input = document.getElementById(fieldId);
-            localStorage.setItem(fieldId, input.value);
-        }
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
     </script>
 
 </body>
