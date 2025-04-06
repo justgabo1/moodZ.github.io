@@ -129,10 +129,7 @@
     </style>
 </head>
 
-
-    
 <body>
-
     <nav>
         <div class="logo">
             <h1>MoodZ</h1>
@@ -182,7 +179,7 @@
             };
 
             const artistContainer = document.getElementById("artists-container");
-            const selectedMood = localStorage.getItem("selectedMood") || "happy";
+            const selectedMood = localStorage.getItem("selectedMood") || "happy"; // Default to 'happy' if no mood is selected.
 
             // Render Artists
             if (moods[selectedMood]) {
@@ -223,13 +220,4 @@
                     const playlist = moods[selectedMood][randomIndex].link;
 
                     nowPlaying.style.display = "block";
-                    setTimeout(() => nowPlaying.style.display = "none", 3000); // hide after 3s
-
-                    window.open(playlist, "_blank");
-                });
-            }
-        });
-    </script>
-
-</body>
-</html>
+                    setTimeout(() => nowPlaying.style.display = "none", 3000
