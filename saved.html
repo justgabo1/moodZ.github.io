@@ -1,46 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Playlists - MoodZ</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Playlists - MoodZ</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      font-family: 'Itim', cursive;
+      background-color: #f0f4ff;
+      color: #2A1D51;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav {
+      background-color: #2A1D51;
+      padding: 10px;
+    }
+
+    nav h1 {
+      color: white;
+      text-align: center;
+      margin: 0;
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      padding: 0;
+      margin: 10px 0;
+    }
+
+    nav ul li {
+      margin: 0 15px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+    }
+
+    #saved-playlists {
+      padding: 20px;
+      text-align: center;
+    }
+
+    #searchBar {
+      padding: 10px;
+      font-size: 16px;
+      width: 60%;
+      max-width: 400px;
+      margin: 20px auto;
+      border: 2px solid #2A1D51;
+      border-radius: 10px;
+    }
+
+    .playlist-item {
+      margin-bottom: 30px;
+    }
+
+    .playlist-title {
+      font-weight: bold;
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+
+    iframe {
+      width: 100%;
+      max-width: 600px;
+      height: 80px;
+      border-radius: 10px;
+    }
+  </style>
 </head>
 
-<script src="script.js"></script>
-
-
 <body>
-    <nav>
-        <h1>MoodZ</h1>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="saved.html">Playlists</a></li>
-            <li><a href="settings.html">Settings</a></li>
-        </ul>
-    </nav>
+  <nav>
+    <h1>MoodZ</h1>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="saved.html">Playlists</a></li>
+      <li><a href="settings.html">Settings</a></li>
+    </ul>
+  </nav>
 
-    <section id="saved-playlists">
-        <h2>Playlists Just for You!</h2>
-        <p>Here are playlist I have created for any MoodZ you have:</p>
+  <section id="saved-playlists">
+    <h2>Playlists Just for You!</h2>
+    <p>Here are playlists I have created for any MoodZ you have:</p>
 
-        <div id="playlist-container">
-            <!-- Random Spotify playlists -->
-            <iframe src="https://open.spotify.com/embed/playlist/1tMM5U1mNVGaJtJHhA1hxS?utm_source=generator" allow="encrypted-media"></iframe>
-			<iframe src="https://open.spotify.com/embed/playlist/6D9iKgct00yW14xgWEsutb?utm_source=generator&theme=0" allow="encrypted-media"></iframe>
-            <iframe src="https://open.spotify.com/embed/playlist/6QSXVRNZnESvVK67Sa322H?utm_source=generator" allow="encrypted-media"></iframe>
-            <iframe src="https://open.spotify.com/embed/playlist/4e8oXQNPCn3O2qZTKPH6yF?utm_source=generator" allow="encrypted-media"></iframe>
-            <iframe src="https://open.spotify.com/embed/playlist/2qpM7Bybl1Gw7SMTlCzOui?utm_source=generator" allow="encrypted-media"></iframe>
-            <iframe src="https://open.spotify.com/embed/playlist/52W53cJxb28VI4Cki3oDs4?utm_source=generator" allow="encrypted-media"></iframe>
-            <iframe src="https://open.spotify.com/embed/playlist/2fDVtXDt8aKhtEScNEDxOp?utm_source=generator" allow="encrypted-media"></iframe>
-            <iframe src="https://open.spotify.com/embed/playlist/47CQ7ik32Dha3nxuzOza76?utm_source=generator" allow="encrypted-media"></iframe>
-			<iframe src="https://open.spotify.com/embed/playlist/7u52QeDnyddtXe8mEpyled?utm_source=generator" allow="encrypted-media"></iframe>
-			<iframe src="https://open.spotify.com/embed/playlist/53WCieQbZoo4SJHy1q3o3d?utm_source=generator" allow="encrypted-media"></iframe>
-			<iframe src="https://open.spotify.com/embed/playlist/4M57AXXgBvwmzONhviaz0A?utm_source=generator" allow="encrypted-media"></iframe>
-			<iframe src="https://open.spotify.com/embed/playlist/54dhRUnaW8rHOYjhqRWX6R?utm_source=generator" allow="encrypted-media"></iframe>
-        </div>
-    </section>
+    <input type="text" id="searchBar" placeholder="Search playlists...">
 
+    <div class="playlist-item" data-title="my personal favourites">
+  <p class="playlist-title">My Personal Favourites</p>
+  <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/1tMM5U1mNVGaJtJHhA1hxS?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+</div>
 
+<div class="playlist-item" data-title="phonky town">
+  <p class="playlist-title">Phonky Town</p>
+  <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/6D9iKgct00yW14xgWEsutb?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+</div>
+
+<div class="playlist-item" data-title="日本語 bangers japanese">
+  <p class="playlist-title">日本語 Bangers</p>
+  <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/6QSXVRNZnESvVK67Sa322H?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+</div>
+
+<div class="playlist-item" data-title="in my feelings">
+  <p class="playlist-title">In My Feelings</p>
+  <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/4e8oXQNPCn3O2qZTKPH6yF?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+</div>
+
+<div class="playlist-item" data-title="in love">
+  <p class="playlist-title">In Love</p>
+  <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/2qpM7Bybl1Gw7SMTlCzOui?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+</div>
+
+<div class="playlist-item" data-title="sad but will be okay">
+  <p class="playlist-title">Sad but Will Be Okay</p>
+  <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/52W53cJxb28VI4Cki3oDs4?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+</div>
+
+<div class="playlist-item" data-title="attack on titan anime favs">
+  <p class="playlist-title">Attack on Titan - Anime Favs</p>
+  <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/2fDVtXDt8aKhtEScNEDxOp?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+</div>
+
+<div class="playlist-item" data-title="my korean pops kpop">
+  <p class="playlist-title">My Korean Pops</p>
+  <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/47CQ7ik32Dha3nxuzOza76?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+</div>
+
+<div class="playlist-item" data-title="oldies but goldies retro classics">
+  <p class="playlist-title">Oldies but Goldies</p>
+  <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/7u52QeDnyddtXe8mEpyled?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+</div>
+
+<div class="playlist-item" data-title="pop all the way pop">
+  <p class="playlist-title">Pop All the Way</p>
+  <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/53WCieQbZoo4SJHy1q3o3d?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+</div>
+
+<div class="playlist-item" data-title="scream all the way rock metal loud">
+  <p class="playlist-title">Scream All the Way</p>
+  <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/4M57AXXgBvwmzONhviaz0A?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+</div>
+
+  </section>
+
+  <script>
+    const searchBar = document.getElementById('searchBar');
+    const playlistItems = document.querySelectorAll('.playlist-item');
+
+    searchBar.addEventListener('input', function () {
+      const query = this.value.toLowerCase();
+
+      playlistItems.forEach(item => {
+        const title = item.getAttribute('data-title');
+        if (title.includes(query)) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    });
+  </script>
 </body>
 </html>
