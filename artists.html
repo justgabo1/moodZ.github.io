@@ -35,66 +35,73 @@
     <a href="index.html" class="back-link">Back to Home</a>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const moods = {
-                happy: [
-                    { name: "BTS", img:"bts.jpeg", link: "https://open.spotify.com/playlist/37i9dQZF1E4rlkYj6ItCDn", about: "BTS (방탄소년단), is a South Korean boy band debuted in 2013. The band consists of Jin, Suga, J-Hope, RM, Jimin, V, and Jung Kook." }, 
-                    { name: "Pitbull", img: "pitbull.jpeg", link: "https://open.spotify.com/playlist/37i9dQZF1E4r0nzNspuQFK", about: "Armando Christian Pérez, better known as Pitbull, is an American rapper and singer. He began his career in the early 2000s" },
-                    { name: "BBNO$", img: "bbno.jpeg", link: "https://open.spotify.com/playlist/37i9dQZF1E4m14w1NfDKCh", about: "Alexander Leon Gumuchian, known professionally as bbno$, is a Canadian rapper and singer." }
-                ],
+    document.addEventListener("DOMContentLoaded", function () {
+        const moods = {
+            happy: [
+                { name: "BTS", img:"bts.jpeg", link: "https://open.spotify.com/playlist/37i9dQZF1E4rlkYj6ItCDn", about: "BTS (방탄소년단), is a South Korean boy band debuted in 2013. The band consists of Jin, Suga, J-Hope, RM, Jimin, V, and Jung Kook." }, 
+                { name: "Pitbull", img: "pitbull.jpeg", link: "https://open.spotify.com/playlist/37i9dQZF1E4r0nzNspuQFK", about: "Armando Christian Pérez, better known as Pitbull, is an American rapper and singer. He began his career in the early 2000s" },
+                { name: "BBNO$", img: "bbno.jpeg", link: "https://open.spotify.com/playlist/37i9dQZF1E4m14w1NfDKCh", about: "Alexander Leon Gumuchian, known professionally as bbno$, is a Canadian rapper and singer." }
+            ],
+            sad: [
+                { name: "TV Girl", img: "tvgirl.jpeg", link: "https://open.spotify.com/playlist/37i9dQZF1E4lFGdRLY5idQ", about: "TV Girl is an American indie pop band from San Diego." },
+                { name: "Billie Eilish", img: "billie.jpeg", link: "https://open.spotify.com/playlist/37i9dQZF1E4oee5QSbfqLN", about: "Billie Eilish is an American singer-songwriter and musician." },
+                { name: "Beach House", img: "beachhouse.jpeg", link: "https://open.spotify.com/playlist/37i9dQZF1E4DemSGzmCZ29", about: "Beach House is an American dream pop band formed in 2004." }
+            ],
+            focus: [
+                { name: "Lofi Girl", img: "lofigirl.jpeg", link: "https://open.spotify.com/playlist/37i9dQZF1E4yVfD4M4LwFh", about: "Lofi Girl is a French YouTube channel known for 24/7 lo-fi music." },
+                { name: "Hans Zimmer", img: "hanszimmer.jpeg", link: "https://open.spotify.com/playlist/37i9dQZF1E4sbexosKtF5C", about: "Hans Zimmer is a German film music composer." },
+                { name: "Kordhell", img: "kordhell.jpeg", link: "https://open.spotify.com/playlist/37i9dQZF1E4yleuWstyUDt", about: "Kordhell makes dark phonk beats with an energetic vibe." }
+            ],
+            angry: [
+                { name: "Eminem", img: "eminem.jpeg", link: "https://open.spotify.com/playlist/37i9dQZF1E4uduXaJcMi49", about: "Eminem is one of the greatest and most influential rappers of all time." },
+                { name: "Slipknot", img: "slipknot.jpeg", link: "https://open.spotify.com/playlist/37i9dQZF1E4m433mhB66fa", about: "Slipknot is an American heavy metal band formed in 1995." },
+                { name: "Bring Me The Horizon", img: "bmth.jpeg", link: "https://open.spotify.com/playlist/37i9dQZF1E4jXFV0KMR1gU", about: "Bring Me the Horizon are a British rock band formed in 2004." }
+            ]
+        };
 
-                sad: [
-                    { name: "TV Girl", img: "tvgirl.jpeg" , link: "https://open.spotify.com/playlist/37i9dQZF1E4lFGdRLY5idQ", about: "TV Girl is an American indie pop band from San Diego. They have a vocalist Brad Petering, a drummer Jason Wyman, and a keyboardist Wyatt Harmon. The band released its first albums in 2010" },
-                    { name: "Billie Eilish", img: "billie.jpeg" , link: "https://open.spotify.com/playlist/37i9dQZF1E4oee5QSbfqLN", about: "Billie Eilish Pirate Baird O'Connell is an American singer-songwriter and musician. She has won nine Grammy Awards so far." },
-                    { name: "Beach House", img: "beachhouse.jpeg" , link: "https://open.spotify.com/playlist/37i9dQZF1E4DemSGzmCZ29", about: "Beach House is an American dream pop band formed in Baltimore in 2004 by current members Victoria Legrand and Alex Scally.Their work is characterized by a hypnotic dream pop style" }
-                ],
-                focus: [
-                    { name: "Lofi Girl", img: "lofigirl.jpeg", link: "https://open.spotify.com/playlist/37i9dQZF1E4yVfD4M4LwFh", about: "Lofi Girl originally is a French YouTube channel livestreams of lo-fi hip hop music 24/7h which provides relaxing beats perfect for studying and deep focus." },
-                    { name: "Hans Zimmer", img: "hanszimmer.jpeg" , link: "https://open.spotify.com/playlist/37i9dQZF1E4sbexosKtF5C", about: "Hans Florian Zimmer is a German film  music composer. He is behind many cinematic, powerful soundtracks." },
-                    { name: "Kordhell", img: "kordhell.jpeg", link: "https://open.spotify.com/playlist/37i9dQZF1E4yleuWstyUDt", about: "Kordhell makes dark phonk beats with a hypnotic and energetic vibe." }
-                ],
-                angry: [
-                    { name: "Eminem", img: "eminem.jpeg" , link: "https://open.spotify.com/playlist/37i9dQZF1E4uduXaJcMi49", about: "Marshall Bruce Mathers III, known professionally as Eminem, is an American rapper, songwriter, and record producer. He is referred as one of the greatest and most influential rappers of all time." },
-                    { name: "Slipknot", img: "slipknot.jpeg" , link: "https://open.spotify.com/playlist/37i9dQZF1E4m433mhB66fa", about: "Slipknot is an American heavy metal band formed in Des Moines, in 1995 by Shawn Crahan, Anders Colsefni, and Paul Gray." },
-                    { name: "Bring Me The Horizon", img: "bmth.jpeg" , link: "https://open.spotify.com/playlist/37i9dQZF1E4jXFV0KMR1gU", about: "Bring Me the Horizon are a British rock band, formed in Sheffield, England in 2004. The group currently consists of lead vocalist Oli Sykes, drummer Matt Nicholls, guitarist Lee Malia and bassist Matt Kean. " }
-                ]
-            };
+        const artistContainer = document.getElementById("artists-container");
+        const selectedMood = localStorage.getItem("selectedMood") || "happy";
 
+        if (moods[selectedMood]) {
+            moods[selectedMood].forEach(artist => {
+                const artistDiv = document.createElement("div");
+                artistDiv.classList.add("artist-card");
 
+                const img = document.createElement("img");
+                img.src = artist.img;
+                img.alt = artist.name;
+                img.classList.add("artist-img");
 
-            const artistContainer = document.getElementById("artists-container");
-            const selectedMood = localStorage.getItem("selectedMood") || "happy"; 
+                const btn = document.createElement("button");
+                btn.textContent = artist.name;
+                btn.classList.add("artist-btn");
+                btn.onclick = () => window.open(artist.link, "_blank");
 
-            if (moods[selectedMood]) {
-                moods[selectedMood].forEach(artist => {
-                    const artistDiv = document.createElement("div");
-                    artistDiv.classList.add("artist-card");
+                const aboutDiv = document.createElement("div");
+                aboutDiv.classList.add("artist-about");
+                aboutDiv.textContent = artist.about;
 
-                    const img = document.createElement("img");
-                    img.src = artist.img;
-                    img.alt = artist.name;
-                    img.classList.add("artist-img");
+                artistDiv.appendChild(img);
+                artistDiv.appendChild(btn);
+                artistDiv.appendChild(aboutDiv);
 
-                    const btn = document.createElement("button");
-                    btn.textContent = artist.name;
-                    btn.classList.add("artist-btn");
-                    btn.onclick = () => window.open(artist.link, "_blank");
+                artistContainer.appendChild(artistDiv);
+            });
+        } else {
+            artistContainer.innerHTML = "<p>No mood selected. Go back to home.</p>";
+        }
 
-                    const aboutDiv = document.createElement("div");
-                    aboutDiv.classList.add("artist-about");
-                    aboutDiv.textContent = artist.about;
-
-                    artistDiv.appendChild(img);
-                    artistDiv.appendChild(btn);
-                    artistDiv.appendChild(aboutDiv);
-
-                    artistContainer.appendChild(artistDiv);
-                });
-            } else {
-                artistContainer.innerHTML = "<p>No mood selected. Go back to home.</p>";
-            }
+        // 🎵 MoodZ Radio Button Functionality
+        const radioBtn = document.getElementById("radio-btn");
+        radioBtn.addEventListener("click", () => {
+            const playlists = moods[selectedMood].map(artist => artist.link);
+            const randomIndex = Math.floor(Math.random() * playlists.length);
+            const randomPlaylist = playlists[randomIndex];
+            window.open(randomPlaylist, "_blank");
         });
-    </script>
+    });
+</script>
+
 
     <style>
         body {
