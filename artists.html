@@ -5,119 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Select an Artist</title>
     <link rel="stylesheet" href="styles.css">
-</head>
-
-<script src="script.js"></script>
-    
-<div id="artists-container"></div>
-
-<-- Radio button BELOW artist buttons -->
-<div style="text-align: center; margin-top: 30px;">
-    <button id="radio-btn" class="mood-btn">🎵 MoodZ Radio</button>
-</div>
-
-
-<body>
-
-    <nav>
-        <div class="logo">
-            <h1>MoodZ</h1>
-        </div>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="#">Playlists</a></li>
-            <li><a href="#">Settings</a></li>
-        </ul>
-    </nav>
-
-    <div class="mood-selection">
-        <h2>Select Your Artist</h2>
-        <div id="artists-container"></div>
-    </div>
-
-    <a href="index.html" class="back-link">Back to Home</a>
-
-    <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const moods = {
-            happy: [
-                { name: "BTS", img:"bts.jpeg", link: "https://open.spotify.com/playlist/37i9dQZF1E4rlkYj6ItCDn", about: "BTS (방탄소년단), is a South Korean boy band debuted in 2013. The band consists of Jin, Suga, J-Hope, RM, Jimin, V, and Jung Kook." }, 
-                { name: "Pitbull", img: "pitbull.jpeg", link: "https://open.spotify.com/playlist/37i9dQZF1E4r0nzNspuQFK", about: "Armando Christian Pérez, better known as Pitbull, is an American rapper and singer. He began his career in the early 2000s" },
-                { name: "BBNO$", img: "bbno.jpeg", link: "https://open.spotify.com/playlist/37i9dQZF1E4m14w1NfDKCh", about: "Alexander Leon Gumuchian, known professionally as bbno$, is a Canadian rapper and singer." }
-            ],
-            sad: [
-                { name: "TV Girl", img: "tvgirl.jpeg", link: "https://open.spotify.com/playlist/37i9dQZF1E4lFGdRLY5idQ", about: "TV Girl is an American indie pop band from San Diego." },
-                { name: "Billie Eilish", img: "billie.jpeg", link: "https://open.spotify.com/playlist/37i9dQZF1E4oee5QSbfqLN", about: "Billie Eilish is an American singer-songwriter and musician." },
-                { name: "Beach House", img: "beachhouse.jpeg", link: "https://open.spotify.com/playlist/37i9dQZF1E4DemSGzmCZ29", about: "Beach House is an American dream pop band formed in 2004." }
-            ],
-            focus: [
-                { name: "Lofi Girl", img: "lofigirl.jpeg", link: "https://open.spotify.com/playlist/37i9dQZF1E4yVfD4M4LwFh", about: "Lofi Girl is a French YouTube channel known for 24/7 lo-fi music." },
-                { name: "Hans Zimmer", img: "hanszimmer.jpeg", link: "https://open.spotify.com/playlist/37i9dQZF1E4sbexosKtF5C", about: "Hans Zimmer is a German film music composer." },
-                { name: "Kordhell", img: "kordhell.jpeg", link: "https://open.spotify.com/playlist/37i9dQZF1E4yleuWstyUDt", about: "Kordhell makes dark phonk beats with an energetic vibe." }
-            ],
-            angry: [
-                { name: "Eminem", img: "eminem.jpeg", link: "https://open.spotify.com/playlist/37i9dQZF1E4uduXaJcMi49", about: "Eminem is one of the greatest and most influential rappers of all time." },
-                { name: "Slipknot", img: "slipknot.jpeg", link: "https://open.spotify.com/playlist/37i9dQZF1E4m433mhB66fa", about: "Slipknot is an American heavy metal band formed in 1995." },
-                { name: "Bring Me The Horizon", img: "bmth.jpeg", link: "https://open.spotify.com/playlist/37i9dQZF1E4jXFV0KMR1gU", about: "Bring Me the Horizon are a British rock band formed in 2004." }
-            ]
-        };
-
-        const artistContainer = document.getElementById("artists-container");
-        const selectedMood = localStorage.getItem("selectedMood") || "happy";
-
-        if (moods[selectedMood]) {
-            moods[selectedMood].forEach(artist => {
-                const artistDiv = document.createElement("div");
-                artistDiv.classList.add("artist-card");
-
-                const img = document.createElement("img");
-                img.src = artist.img;
-                img.alt = artist.name;
-                img.classList.add("artist-img");
-
-                const btn = document.createElement("button");
-                btn.textContent = artist.name;
-                btn.classList.add("artist-btn");
-                btn.onclick = () => window.open(artist.link, "_blank");
-
-                const aboutDiv = document.createElement("div");
-                aboutDiv.classList.add("artist-about");
-                aboutDiv.textContent = artist.about;
-
-                artistDiv.appendChild(img);
-                artistDiv.appendChild(btn);
-                artistDiv.appendChild(aboutDiv);
-
-                artistContainer.appendChild(artistDiv);
-            });
-        } else {
-            artistContainer.innerHTML = "<p>No mood selected. Go back to home.</p>";
-        }
-
-        // 🎵 MoodZ Radio Button Logic
-const radioBtn = document.getElementById("radio-btn");
-if (radioBtn && artistContainer) {
-    const selectedMood = localStorage.getItem("selectedMood");
-    if (selectedMood && moods[selectedMood]) {
-        radioBtn.style.display = "inline-block"; // make sure it's visible
-
-        radioBtn.addEventListener("click", () => {
-            const playlists = moods[selectedMood];
-            const randomIndex = Math.floor(Math.random() * playlists.length);
-            const randomPlaylist = playlists[randomIndex].link;
-            window.open(randomPlaylist, "_blank");
-        });
-
-        // Show the artists too (in case this wasn't working)
-        showArtists(selectedMood);
-    } else {
-        radioBtn.style.display = "none"; // Hide if mood not set
-    }
-}
-
-</script>
-
-
     <style>
         body {
             font-family: 'Itim', cursive;
@@ -128,7 +15,36 @@ if (radioBtn && artistContainer) {
             text-align: center;
         }
 
-        /* Artist Cards */
+        nav {
+            background-color: #2A1D51;
+            padding: 10px;
+        }
+
+        nav h1 {
+            color: white;
+            margin: 0;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .mood-selection h2 {
+            margin-top: 30px;
+        }
+
         .artist-card {
             display: flex;
             flex-direction: column;
@@ -175,32 +91,142 @@ if (radioBtn && artistContainer) {
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
-        /* Dark Mode */
-        body.dark-mode {
-            background-color: #111;
-            color: #00BFFF;
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: #2A1D51;
+            text-decoration: underline;
         }
 
-        body.dark-mode .artist-card {
-            background-color: #222;
+        #radio-btn {
+            margin: 40px auto 20px;
+            padding: 12px 30px;
+            font-size: 18px;
+            border: none;
+            background-color: #2A1D51;
+            color: white;
+            border-radius: 15px;
+            cursor: pointer;
         }
 
-        body.dark-mode .artist-btn {
-            background-color: #444;
-            color: #00BFFF;
+        #radio-btn:hover {
+            background-color: #4b367c;
         }
 
-        body.dark-mode .artist-about {
-            background-color: #333;
-            color: #00BFFF;
+        #now-playing {
+            display: none;
+            margin-top: 10px;
+            color: #4b367c;
+            font-weight: bold;
+            animation: pulse 1s infinite;
         }
 
- 
-
-
-
-
+        @keyframes pulse {
+            0% { opacity: 0.3; }
+            50% { opacity: 1; }
+            100% { opacity: 0.3; }
+        }
     </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">
+            <h1>MoodZ</h1>
+        </div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#">Playlists</a></li>
+            <li><a href="#">Settings</a></li>
+        </ul>
+    </nav>
+
+    <div class="mood-selection">
+        <h2>Select Your Artist</h2>
+        <div id="artists-container"></div>
+    </div>
+
+    <div style="text-align: center;">
+        <button id="radio-btn" class="mood-btn">🎵 MoodZ Radio</button>
+        <div id="now-playing">🎶 Now Playing...</div>
+    </div>
+
+    <a href="index.html" class="back-link">Back to Home</a>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const moods = {
+                happy: [
+                    { name: "BTS", img: "bts.jpeg", link: "https://open.spotify.com/playlist/37i9dQZF1E4rlkYj6ItCDn", about: "BTS (방탄소년단), is a South Korean boy band debuted in 2013. The band consists of Jin, Suga, J-Hope, RM, Jimin, V, and Jung Kook." }, 
+                    { name: "Pitbull", img: "pitbull.jpeg", link: "https://open.spotify.com/playlist/37i9dQZF1E4r0nzNspuQFK", about: "Armando Christian Pérez, aka Pitbull, is an American rapper and singer." },
+                    { name: "BBNO$", img: "bbno.jpeg", link: "https://open.spotify.com/playlist/37i9dQZF1E4m14w1NfDKCh", about: "Alexander Gumuchian, known as bbno$, is a Canadian rapper and singer." }
+                ],
+                sad: [
+                    { name: "TV Girl", img: "tvgirl.jpeg", link: "https://open.spotify.com/playlist/37i9dQZF1E4lFGdRLY5idQ", about: "TV Girl is an American indie pop band from San Diego." },
+                    { name: "Billie Eilish", img: "billie.jpeg", link: "https://open.spotify.com/playlist/37i9dQZF1E4oee5QSbfqLN", about: "Billie Eilish is an American singer-songwriter." },
+                    { name: "Beach House", img: "beachhouse.jpeg", link: "https://open.spotify.com/playlist/37i9dQZF1E4DemSGzmCZ29", about: "Beach House is an American dream pop band." }
+                ],
+                focus: [
+                    { name: "Lofi Girl", img: "lofigirl.jpeg", link: "https://open.spotify.com/playlist/37i9dQZF1E4yVfD4M4LwFh", about: "Lofi Girl is a YouTube channel known for 24/7 lo-fi music." },
+                    { name: "Hans Zimmer", img: "hanszimmer.jpeg", link: "https://open.spotify.com/playlist/37i9dQZF1E4sbexosKtF5C", about: "Hans Zimmer is a legendary film composer." },
+                    { name: "Kordhell", img: "kordhell.jpeg", link: "https://open.spotify.com/playlist/37i9dQZF1E4yleuWstyUDt", about: "Kordhell creates dark phonk beats." }
+                ],
+                angry: [
+                    { name: "Eminem", img: "eminem.jpeg", link: "https://open.spotify.com/playlist/37i9dQZF1E4uduXaJcMi49", about: "Eminem is one of the most influential rappers ever." },
+                    { name: "Slipknot", img: "slipknot.jpeg", link: "https://open.spotify.com/playlist/37i9dQZF1E4m433mhB66fa", about: "Slipknot is an American heavy metal band." },
+                    { name: "Bring Me The Horizon", img: "bmth.jpeg", link: "https://open.spotify.com/playlist/37i9dQZF1E4jXFV0KMR1gU", about: "BMTH is a British rock band formed in 2004." }
+                ]
+            };
+
+            const artistContainer = document.getElementById("artists-container");
+            const selectedMood = localStorage.getItem("selectedMood") || "happy";
+
+            // Render Artists
+            if (moods[selectedMood]) {
+                moods[selectedMood].forEach(artist => {
+                    const artistDiv = document.createElement("div");
+                    artistDiv.classList.add("artist-card");
+
+                    const img = document.createElement("img");
+                    img.src = artist.img;
+                    img.alt = artist.name;
+                    img.classList.add("artist-img");
+
+                    const btn = document.createElement("button");
+                    btn.textContent = artist.name;
+                    btn.classList.add("artist-btn");
+                    btn.onclick = () => window.open(artist.link, "_blank");
+
+                    const aboutDiv = document.createElement("div");
+                    aboutDiv.classList.add("artist-about");
+                    aboutDiv.textContent = artist.about;
+
+                    artistDiv.appendChild(img);
+                    artistDiv.appendChild(btn);
+                    artistDiv.appendChild(aboutDiv);
+                    artistContainer.appendChild(artistDiv);
+                });
+            } else {
+                artistContainer.innerHTML = "<p>No mood selected. Go back to home.</p>";
+            }
+
+            // Radio button
+            const radioBtn = document.getElementById("radio-btn");
+            const nowPlaying = document.getElementById("now-playing");
+
+            if (radioBtn && moods[selectedMood]) {
+                radioBtn.addEventListener("click", () => {
+                    const randomIndex = Math.floor(Math.random() * moods[selectedMood].length);
+                    const playlist = moods[selectedMood][randomIndex].link;
+
+                    nowPlaying.style.display = "block";
+                    setTimeout(() => nowPlaying.style.display = "none", 3000); // hide after 3s
+
+                    window.open(playlist, "_blank");
+                });
+            }
+        });
+    </script>
 
 </body>
 </html>
